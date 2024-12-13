@@ -11,6 +11,12 @@ export class WebsiteStack extends cdk.Stack {
     const websiteBucket = new s3.Bucket(this, 'WebsiteBucket', {
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
+      blockPublicAccess: {
+        blockPublicAcls: false,
+        blockPublicPolicy: false,
+        ignorePublicAcls: false,
+        restrictPublicBuckets: false,
+      },
       removalPolicy: cdk.RemovalPolicy.DESTROY, // Be cautious in production
     });
 
